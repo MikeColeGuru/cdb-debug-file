@@ -9,7 +9,7 @@ export class CDBLink {
         this.cdb = cdb
     }
 
-    parseLine(line: string, lineno: number) {
+    async parseLine(line: string, lineno: number) {
         const [line_type, str, addr] = line.split(":", 3)
 
         if (line_type != "L") {
@@ -60,7 +60,7 @@ export class CDBLink {
                     let mod = this.cdb.findModuleByName(module_name)
                     if (mod === undefined) {
                         mod = new CDBModule(this.cdb)
-                        mod.parseLine("M:" + module_name, lineno)
+                        await mod.parseLine("M:" + module_name, lineno)
                         this.cdb.addModule(mod)
                     }
                     if (mod.asm_lines.length > asm_lineno) {
@@ -78,7 +78,7 @@ export class CDBLink {
                     let mod = this.cdb.findModuleByCFilename(filename)
                     if (mod === undefined) {
                         mod = new CDBModule(this.cdb)
-                        mod.parseLine(
+                        await mod.parseLine(
                             "M:" + CDBModule.filenameToModuleName(filename),
                             lineno
                         )

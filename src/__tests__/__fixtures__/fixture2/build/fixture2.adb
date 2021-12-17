@@ -1,0 +1,11 @@
+M:fixture2
+F:G$main$0_0$0({2}DF,SV:S),C,0,0,0,0,0
+T:Ffixture2$moduleB[({0}S:S$a$0_0$0({2}SI:S),Z,0,0)({2}S:S$b$0_0$0({2}SI:S),Z,0,0)({4}S:S$c$0_0$0({1}SC:U),Z,0,0)]
+S:Lfixture2.main$a$1_0$3({2}SI:S),E,0,0
+S:Lfixture2.main$b$1_0$3({2}SI:S),E,0,0
+S:Lfixture2.main$c$1_0$3({2}SI:S),E,0,0
+S:Lfixture2.main$d$1_0$3({2}SI:S),E,0,0
+S:Lfixture2.main$e$1_0$3({5}STmoduleB:S),E,0,0
+S:G$sub$0_0$0({2}DF,SI:S),C,0,0
+S:G$add$0_0$0({2}DF,SI:S),C,0,0
+S:G$main$0_0$0({2}DF,SV:S),C,0,0

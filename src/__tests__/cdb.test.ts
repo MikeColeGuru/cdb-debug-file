@@ -6,7 +6,7 @@ describe("CDB", () => {
         const cdb = new CDB()
         return expect(
             cdb.loadFile(
-                "./src/__tests__/__fixtures__/example2/build/example2.cdb"
+                "./src/__tests__/__fixtures__/fixture2/build/fixture2.cdb"
             )
         ).resolves
     })

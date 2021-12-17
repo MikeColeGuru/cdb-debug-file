@@ -2,7 +2,6 @@ import { CDB, EXEPoint } from "./cdb"
 import { resolve, basename } from "path"
 import { readdir } from "fs/promises"
 import readline from "readline"
-import events from "events"
 import fs from "fs"
 
 export class SRCLine {
@@ -47,7 +46,7 @@ export class CDBModule {
         this.cdb = cdb
     }
 
-    parseLine(line: string, lineno: number): boolean {
+    async parseLine(line: string, lineno: number): Promise<boolean> {
         const reg = RegExp("([A-Z]):([a-zA-Z_0-9]+)")
         const parts = reg.exec(line)
 
@@ -64,27 +63,42 @@ export class CDBModule {
 
         this.name = parts[2]
 
-        this._readASMFile(this.name).then(() => {
-            this._readCFile(this.name)
-        })
+        await this._readASMFile(this.name)
+        await this._readCFile(this.name)
 
         return true
     }
 
     private async _findFile(
         filename: string | RegExp,
-        path: string
+        path: string,
+        convert_to_module_name = false
     ): Promise<string | undefined> {
         const dirents = await readdir(path, { withFileTypes: true })
         if (typeof filename == "string") {
             for (const dirent of dirents) {
-                if (dirent.isFile() && dirent.name == filename)
-                    return resolve(path, dirent.name)
+                if (dirent.isFile()) {
+                    let name
+                    if (convert_to_module_name) {
+                        name = CDBModule.filenameToModuleNameWithExtension(dirent.name)
+                    }
+                    else
+                        name = dirent.name
+                    
+                    if (name == filename)
+                        return resolve(path, dirent.name)
+                }
             }
         } else {
             for (const dirent of dirents) {
                 if (dirent.isFile()) {
-                    const p = filename.exec(dirent.name)
+                    let name
+                    if (convert_to_module_name)
+                        name = CDBModule.filenameToModuleNameWithExtension(dirent.name)
+                    else
+                        name = dirent.name
+
+                    const p = filename.exec(name)
                     if (p !== null) return resolve(path, dirent.name)
                 }
             }
@@ -98,7 +112,8 @@ export class CDBModule {
                 //console.error("Path: " + resolve(path, dirent.name))
                 const ret = await this._findFile(
                     filename,
-                    resolve(path, dirent.name)
+                    resolve(path, dirent.name),
+                    convert_to_module_name
                 )
                 //console.error("ret = "+ret)
                 if (ret !== undefined) return ret
@@ -110,13 +125,8 @@ export class CDBModule {
     private async _getASMPath(
         module_name: string
     ): Promise<string | undefined> {
-        // create fuzz regex; this is because the module name is sometime different than filename
-        const split_underscore = module_name.split("_")
-        const regex = RegExp(
-            split_underscore.join("[^A-Za-z0-9]") + "(\\.app)?\\.asm$"
-        )
-
-        return await this._findFile(regex, this.cdb.build_path)
+        const regex = RegExp(module_name + "(\\.app)?\\.asm$")
+        return await this._findFile(regex, this.cdb.build_path, true)
     }
 
     private async _readASMFile(module_name: string): Promise<void> {
@@ -133,14 +143,12 @@ export class CDBModule {
         })
 
         let lineno = 0
-        read_line.on("line", line => {
+        for await (const line of read_line) {
             lineno++
             const src_line = new SRCLine()
             src_line.line = line
             this.asm_lines[lineno] = src_line
-        })
-
-        await events.once(read_line, "close")
+        }
 
         this.asm_path = filename
         this.asm_filename = basename(filename)
@@ -149,13 +157,10 @@ export class CDBModule {
     private async _getCPath(module_name: string): Promise<string | undefined> {
         let c_path
 
-        // create fuzz regex; this is because the module name is sometime different than filename
-        const split_underscore = module_name.split("_")
-        const regex = RegExp(split_underscore.join("[^A-Za-z0-9]") + "\\.c$")
+        const regex = RegExp(module_name + "\\.c$")
 
         if (this.cdb.source_path != "") {
-            // look in source_path with fuzz
-            c_path = await this._findFile(regex, this.cdb.source_path)
+            c_path = await this._findFile(regex, this.cdb.source_path, true)
         }
 
         if (c_path === undefined) {
@@ -172,8 +177,7 @@ export class CDBModule {
         }
 
         if (c_path === undefined) {
-            // look in build_path with fuzz
-            c_path = await this._findFile(regex, this.cdb.build_path)
+            c_path = await this._findFile(regex, this.cdb.build_path, true)
         }
 
         if (c_path !== undefined) {
@@ -195,14 +199,12 @@ export class CDBModule {
         })
 
         let lineno = 0
-        read_line.on("line", line => {
+        for await (const line of read_line) {
             lineno++
             const src_line = new SRCLine()
             src_line.line = line
             this.c_lines[lineno] = src_line
-        })
-
-        await events.once(read_line, "close")
+        }
 
         this.c_path = filename
         this.c_filename = basename(filename)
@@ -214,10 +216,32 @@ export class CDBModule {
         return filename
     }
 
+    static underscoreUnicode(str: string) {
+        return str.split("").map(value => {
+            const cp = value.codePointAt(0)
+            if (cp === undefined) return value
+            if (cp > 0xFFFF) return "____"
+            if (cp > 0x07FF) return "___"
+            if (cp > 0x007F) return "__"
+            return value
+        }).join("")
+    }
+
+    static filenameToModuleNameWithExtension(filename: string): string {
+        return CDBModule.underscoreUnicode(filename).replace(
+            /[^A-Za-z0-9.]/,
+            "_"
+        )
+    }
+
     static filenameToModuleName(filename: string): string {
-        return CDBModule.filenameWithoutExtension(filename).replace(
+        return CDBModule.filenameWithoutExtension(
+            CDBModule.underscoreUnicode(filename)
+        ).replace(
             /[^A-Za-z0-9]/,
             "_"
         )
     }
+
+
 }

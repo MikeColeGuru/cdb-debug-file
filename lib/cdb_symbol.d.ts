@@ -1,10 +1,10 @@
 import { CDB } from "./cdb";
 import { CDBModule } from "./cdb_module";
-declare enum CLASS_TYPE {
+export declare enum CLASS_TYPE {
     declarator = "D",
     specifier = "S"
 }
-declare enum DCLType {
+export declare enum DCLType {
     undefined = "",
     function = "F",
     genericptr = "G",
@@ -16,7 +16,7 @@ declare enum DCLType {
     eepromptr = "E",
     array = "A"
 }
-declare enum SPCType {
+export declare enum SPCType {
     undefined = "",
     v_long = "L",
     v_int = "I",
@@ -29,13 +29,13 @@ declare enum SPCType {
     v_sbit = "X",
     v_bitfield = "B"
 }
-declare enum ScopeType {
+export declare enum ScopeType {
     global = "G",
     module = "F",
     local = "L",
     structure = "S"
 }
-declare enum AddressSpace {
+export declare enum AddressSpace {
     extstack = "A",
     intstack = "B",
     code = "C",
@@ -50,10 +50,6 @@ declare enum AddressSpace {
     undefined = "Z"
 }
 export declare class CDBSymbol {
-    static readonly ScopeType: typeof ScopeType;
-    readonly ScopeType: typeof ScopeType;
-    static readonly AddressSpace: typeof AddressSpace;
-    readonly AddressSpace: typeof AddressSpace;
     /**
      *
      */
@@ -152,6 +148,7 @@ export declare class CDBSymbol {
     conplex_offset: number;
     extra_debug: string;
     constructor(cdb: CDB);
+    static parseLevel(level: string): number;
     parseLine(line: string, lineno: number): number;
     parseTypeChain(str: string): void;
     toString(): string;
@@ -193,4 +190,3 @@ export declare class TypeRecord {
     num_bits: number;
     constructor(type_code: string, extra: string);
 }
-export {};

@@ -3,7 +3,6 @@ import { CDBSymbol } from "./cdb_symbol"
 import { CDBFunction } from "./cdb_function"
 import fs from "fs"
 import readline from "readline"
-import events from "events"
 import { CDBComplex } from "./cdb_complex"
 import path from "path"
 import { CDBLink } from "./cdb_link"
@@ -85,33 +84,23 @@ export class CDB {
     }
 
     findModuleByName(name: string): CDBModule | undefined {
-        if (this.modules_by_name.has(name))
-            return this.modules_by_name.get(name)
-        return undefined
+        return this.modules_by_name.get(name)
     }
 
     findModuleByCFilename(filename: string): CDBModule | undefined {
-        if (this.modules_by_c_filename.has(filename))
-            return this.modules_by_c_filename.get(filename)
-        return undefined
+        return this.modules_by_c_filename.get(filename)
     }
 
     findSymbolByMangledName(mangled_name: string): CDBSymbol | undefined {
-        if (this.symbols.has(mangled_name))
-            return this.symbols.get(mangled_name)
-        return undefined
+        return this.symbols.get(mangled_name)
     }
 
     findFunctionByMangledName(mangled_name: string): CDBFunction | undefined {
-        if (this.functions_by_mangled_name.has(mangled_name))
-            return this.functions_by_mangled_name.get(mangled_name)
-        return undefined
+        return this.functions_by_mangled_name.get(mangled_name)
     }
 
     findFunctionByName(name: string): CDBFunction | undefined {
-        if (this.functions_by_name.has(name))
-            return this.functions_by_name.get(name)
-        return undefined
+        return this.functions_by_name.get(name)
     }
 
     setBuildPath(build_path: string) {
@@ -124,15 +113,14 @@ export class CDB {
         this._source_path_set = true
     }
 
-    parseLine(line: string, lineno: number) {
+    async parseLine(line: string, lineno: number) {
         const parts = line.split(":", 2)
 
         switch (parts[0]) {
             case "M": {
                 const module = new CDBModule(this)
-                if (module.parseLine(line, lineno)) {
-                    this.addModule(module)
-                }
+                await module.parseLine(line, lineno)
+                this.addModule(module)
                 break
             }
             case "F": {
@@ -157,19 +145,19 @@ export class CDB {
             }
             case "L": {
                 const link = new CDBLink(this)
-                link.parseLine(line, lineno)
+                await link.parseLine(line, lineno)
                 break
             }
         }
     }
 
-    loadString(cdb_string: string) {
+    async loadString(cdb_string: string) {
         this.clear()
         const lines = cdb_string.split(/\r?\n/)
         let lineno = 0
         for (const line in lines) {
             lineno++
-            this.parseLine(line, lineno)
+            await this.parseLine(line, lineno)
         }
         this._functionPoints()
     }
@@ -186,12 +174,10 @@ export class CDB {
         })
 
         let lineno = 0
-        read_line.on("line", line => {
+        for await (const line of read_line) {
             lineno++
-            this.parseLine(line, lineno)
-        })
-
-        await events.once(read_line, "close")
+            await this.parseLine(line, lineno)
+        }
 
         this._functionPoints()
     }
@@ -221,13 +207,13 @@ export class CDB {
         // }
 
         this.functions_by_name.forEach(func => {
-            console.log(
-                `sdcdb: func '${
-                    func.name
-                }' has entry '0x${func.address.toString(
-                    16
-                )}' exit '0x${func.exit_address.toString(16)}'`
-            )
+            // console.log(
+            //     `sdcdb: func '${
+            //         func.name
+            //     }' has entry '0x${func.address.toString(
+            //         16
+            //     )}' exit '0x${func.exit_address.toString(16)}'`
+            // )
 
             if (func.address < 0 || func.exit_address < 0) return
             if (func.module === undefined) return

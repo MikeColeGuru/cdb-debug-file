@@ -1,0 +1,364 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  l_BIT_BANK                      
+C:   00000000  l_BSEG                          
+C:   00000000  l_BSEG_BYTES                    
+C:   00000000  l_CABS                          
+C:   00000000  l_CONST                         
+C:   00000000  l_GSINIT                        
+C:   00000000  l_GSINIT1                       
+C:   00000000  l_GSINIT5                       
+C:   00000000  l_IABS                          
+C:   00000000  l_ISEG                          
+C:   00000000  l_PSEG                          
+C:   00000000  l_REG_BANK_1                    
+C:   00000000  l_REG_BANK_2                    
+C:   00000000  l_REG_BANK_3                    
+C:   00000000  l_RSEG                          
+C:   00000000  l_RSEG0                         
+C:   00000000  l_RSEG1                         
+C:   00000000  l_XABS                          
+C:   00000000  l_XINIT                         
+C:   00000000  l_XISEG                         
+C:   00000000  l_XSEG                          
+C:   00000000  l__CODE                         
+C:   00000000  s_BSEG                          
+C:   00000000  s_CABS                          
+C:   00000000  s_DSEG                          
+C:   00000000  s_HOME                          
+C:   00000000  s_IABS                          
+C:   00000000  s_ISEG                          
+C:   00000000  s_REG_BANK_0                    
+C:   00000000  s_RSEG                          
+C:   00000000  s_RSEG0                         
+C:   00000000  s_RSEG1                         
+C:   00000000  s_XABS                          
+C:   00000001  s_PSEG                          
+C:   00000001  s_XISEG                         
+C:   00000001  s_XSEG                          
+C:   00000003  l_GSFINAL                       
+C:   00000003  l_GSINIT0                       
+C:   00000003  l_OSEG                          
+C:   00000006  l_HOME                          
+C:   00000006  s_GSINIT0                       
+C:   00000008  l_REG_BANK_0                    
+C:   00000008  s_REG_BANK_1                    
+C:   00000009  s_GSINIT1                       
+C:   00000009  s_GSINIT2                       
+C:   0000000A  l_GSINIT2                       
+C:   00000010  s_REG_BANK_2                    
+C:   00000013  s_GSINIT3                       
+C:   00000015  s_OSEG                          
+C:   00000018  s_BIT_BANK                      
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000018  s_REG_BANK_3                    
+C:   00000018  s_SSEG                          
+C:   00000020  s_BSEG_BYTES                    
+C:   00000020  s__CODE                         
+C:   00000022  l_GSINIT3                       
+C:   0000002A  l_GSINIT4                       
+C:   00000035  s_GSINIT4                       
+C:   0000005F  s_GSFINAL                       
+C:   0000005F  s_GSINIT                        
+C:   0000005F  s_GSINIT5                       
+C:   00000062  s_CSEG                          
+C:   00000080  l_DSEG                          
+C:   000000A5  l_CSEG                          
+C:   000000E8  l_SSEG                          
+C:   00000100  l_IRAM                          
+C:   00000107  s_CONST                         
+C:   00000107  s_XINIT                         
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           _startup
+     000000A0  __XPAGE                            
+     000000F5  _B_5                               _gptrget
+     000000F6  _B_6                               _gptrget
+     000000F7  _B_7                               _gptrget
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+REG_BANK_0                          00000000    00000008 =           8. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DSEG                                00000000    00000080 =         128. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000008  Lfixture2.main$a$1_0$3             fixture2
+     0000000A  Lfixture2.main$b$1_0$3             fixture2
+     0000000C  Lfixture2.main$c$1_0$3             fixture2
+     0000000E  Lfixture2.main$d$1_0$3             fixture2
+     00000010  Lfixture2.main$e$1_0$3             fixture2
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+OSEG                                00000015    00000003 =           3. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000015  LmoduleB.add$b$1_0$2               moduleB
+     00000015  Lmodule___A.sub$b$1_0$2            module___A
+     00000015  _add_PARM_2                        moduleB
+     00000015  _sub_PARM_2                        module___A
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000018    000000E8 =         232. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000018  __start__stack                     fixture2
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00000000    00000006 =           6. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  A$fixture2$102                     fixture2
+C:   00000003  A$fixture2$124                     fixture2
+C:   00000003  __sdcc_program_startup             fixture2
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT0                             00000006    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000006  __sdcc_gsinit_startup              
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT2                             00000009    0000000A =          10. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT3                             00000013    00000022 =          34. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000013  __mcs51_genXINIT                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT4                             00000035    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000035  __mcs51_genRAMCLEAR                
+C:   0000003B  __mcs51_genXRAMCLEAR               
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             0000005F    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000005F  A$fixture2$117                     fixture2
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                00000062    000000A5 =         165. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000062  A$fixture2$156                     fixture2
+C:   00000062  C$fixture2.c$4$0_0$3               fixture2
+C:   00000062  C$fixture2.c$5$2_0$3               fixture2
+C:   00000062  G$main$0$0                         fixture2
+C:   00000062  _main                              fixture2
+C:   00000065  A$fixture2$157                     fixture2
+C:   00000068  A$fixture2$160                     fixture2
+C:   00000068  C$fixture2.c$6$2_0$3               fixture2
+C:   0000006B  A$fixture2$161                     fixture2
+C:   0000006E  A$fixture2$164                     fixture2
+C:   0000006E  C$fixture2.c$7$1_0$3               fixture2
+C:   00000071  A$fixture2$165                     fixture2
+C:   00000074  A$fixture2$166                     fixture2
+C:   00000077  A$fixture2$167                     fixture2
+C:   0000007A  A$fixture2$168                     fixture2
+C:   0000007D  A$fixture2$169                     fixture2
+C:   00000080  A$fixture2$172                     fixture2
+C:   00000080  C$fixture2.c$11$1_0$3              fixture2
+C:   00000083  A$fixture2$173                     fixture2
+C:   00000086  A$fixture2$176                     fixture2
+C:   00000086  C$fixture2.c$12$1_0$3              fixture2
+C:   00000089  A$fixture2$177                     fixture2
+C:   0000008C  A$fixture2$180                     fixture2
+C:   0000008C  C$fixture2.c$13$1_0$3              fixture2
+C:   0000008F  A$fixture2$183                     fixture2
+C:   0000008F  C$fixture2.c$15$1_0$3              fixture2
+C:   00000092  A$fixture2$184                     fixture2
+C:   00000095  A$fixture2$185                     fixture2
+C:   00000098  A$fixture2$186                     fixture2
+C:   0000009B  A$fixture2$187                     fixture2
+C:   0000009E  A$fixture2$188                     fixture2
+C:   000000A1  A$fixture2$189                     fixture2
+C:   000000A4  A$fixture2$190                     fixture2
+C:   000000A7  A$fixture2$195                     fixture2
+C:   000000A7  C$fixture2.c$16$1_0$3              fixture2
+C:   000000A7  XG$main$0$0                        fixture2
+C:   000000A8  A$module→A$115                   module___A
+C:   000000A8  C$module→A.c$3$0_0$3             module___A
+C:   000000A8  G$sub$0$0                          module___A
+C:   000000A8  _sub                               module___A
+C:   000000AA  A$module→A$116                   module___A
+C:   000000AC  A$module→A$119                   module___A
+C:   000000AC  C$module→A.c$4$1_0$3             module___A
+C:   000000AE  A$module→A$120                   module___A
+C:   000000B0  A$module→A$121                   module___A
+C:   000000B1  A$module→A$122                   module___A
+C:   000000B2  A$module→A$123                   module___A
+C:   000000B3  A$module→A$124                   module___A
+C:   000000B5  A$module→A$125                   module___A
+C:   000000B6  A$module→A$126                   module___A
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                00000062    000000A5 =         165. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000B7  A$module→A$127                   module___A
+C:   000000B9  A$module→A$132                   module___A
+C:   000000B9  C$module→A.c$5$1_0$3             module___A
+C:   000000B9  XG$sub$0$0                         module___A
+C:   000000BA  A$moduleB$115                      moduleB
+C:   000000BA  C$moduleB.c$4$0_0$3                moduleB
+C:   000000BA  G$add$0$0                          moduleB
+C:   000000BA  _add                               moduleB
+C:   000000BC  A$moduleB$116                      moduleB
+C:   000000BE  A$moduleB$119                      moduleB
+C:   000000BE  C$moduleB.c$5$1_0$3                moduleB
+C:   000000C0  A$moduleB$120                      moduleB
+C:   000000C2  A$moduleB$121                      moduleB
+C:   000000C4  A$moduleB$124                      moduleB
+C:   000000C4  C$moduleB.c$6$2_0$4                moduleB
+C:   000000C6  A$moduleB$125                      moduleB
+C:   000000C8  A$moduleB$126                      moduleB
+C:   000000CA  A$moduleB$127                      moduleB
+C:   000000CC  A$moduleB$128                      moduleB
+C:   000000CE  A$moduleB$129                      moduleB
+C:   000000D0  A$moduleB$130                      moduleB
+C:   000000D3  A$moduleB$131                      moduleB
+C:   000000D4  A$moduleB$132                      moduleB
+C:   000000D5  A$moduleB$133                      moduleB
+C:   000000D8  A$moduleB$134                      moduleB
+C:   000000D9  A$moduleB$135                      moduleB
+C:   000000DA  A$moduleB$136                      moduleB
+C:   000000DB  A$moduleB$137                      moduleB
+C:   000000DD  A$moduleB$138                      moduleB
+C:   000000DE  A$moduleB$139                      moduleB
+C:   000000DF  A$moduleB$140                      moduleB
+C:   000000E1  A$moduleB$141                      moduleB
+C:   000000E3  A$moduleB$145                      moduleB
+C:   000000E3  C$moduleB.c$8$1_0$3                moduleB
+C:   000000E6  A$moduleB$151                      moduleB
+C:   000000E6  C$moduleB.c$9$1_0$3                moduleB
+C:   000000E6  XG$add$0$0                         moduleB
+C:   000000E7  __gptrget                          _gptrget
+C:   00000103  __sdcc_external_startup            _startup
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+
+Files Linked                              [ module(s) ]
+
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/./fixture2.rel
+                                          [  ]
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/folder1/module→A.rel
+                                          [  ]
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/folder-2/moduleB.rel
+                                          [  ]
+
+
+Libraries Linked                          [ object file ]
+
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/mcs51.lib
+                                          [ crtclear.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/mcs51.lib
+                                          [ crtxinit.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/mcs51.lib
+                                          [ crtxclear.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/mcs51.lib
+                                          [ crtpagesfr.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/mcs51.lib
+                                          [ crtstart.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/libsdcc.lib
+                                          [ _gptrget.rel ]
+/usr/local/bin/../share/sdcc/lib/small-stack-auto/libsdcc.lib
+                                          [ _startup.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+
+User Base Address Definitions
+
+HOME = 0x0000
+XSEG = 0x0001
+PSEG = 0x0001
+ISEG = 0x0000
+BSEG = 0x0000
+
+

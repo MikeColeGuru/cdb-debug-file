@@ -1,0 +1,22 @@
+-muwx
+-i build/fixture2.ihx
+-M
+-b HOME = 0x0000
+-b XSEG = 0x0001
+-b PSEG = 0x0001
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-y -j -u
+-k /usr/local/bin/../share/sdcc/lib/small-stack-auto
+-k /usr/local/share/sdcc/lib/small-stack-auto
+-l libsdcc.lib
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/./fixture2.rel
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/folder1/module→A.rel
+/home/draco/Projects/cdb-debug-file/src/__tests__/__fixtures__/fixture2/build/folder-2/moduleB.rel
+
+-e
